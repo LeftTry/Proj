@@ -32,10 +32,10 @@ using namespace std;
 int main(){
     //ios_base::sync_with_stdio(false);
     //cin.tie(NULL);
-    str sur, name, fav, pty;
-    cout << "Имя " << "Фамилия " << "Любимая книга " << "Партия?";
-    cin >> name >> sur >> fav >> pty;
+    str sur, name, fav;
+    cout << "name " << "surname " << "favorite book";
+    cin >> name >> sur >> fav;
     ofstream file("output.txt");
-    file << name << endl << sur << endl << fav << endl << pty;
+    file << name << endl << sur << endl << fav;
     return 0;
 }
