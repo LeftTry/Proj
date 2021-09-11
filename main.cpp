@@ -30,10 +30,10 @@
 using namespace std;
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    //ios_base::sync_with_stdio(false);
+    //cin.tie(NULL);
     str sur, name, fav;
-    //cout << "name" << "surname" << "favorite film";
+    cout << "name " << "surname " << "favorite book";
     cin >> name >> sur >> fav;
     ofstream file("output.txt");
     file << name << endl << sur << endl << fav;
