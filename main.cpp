@@ -29,25 +29,41 @@
 
 using namespace std;
 
-void res(str name, str sur, str fav, str book){
-    cout << "Name: " << name << endl;
-    cout << "Surname: " << sur << endl;
-    cout << "Favorite " << book << ": " << fav << endl;
+void res(vector<str> &v, ofstream& file){
+    for(au i : v){
+        cout << i << endl;
+    }
+    for(au i : v){
+        file << i << endl;
+    }
 }
 
 int main(){
     //ios_base::sync_with_stdio(false);
     //cin.tie(NULL);
-    str sur, name, fav;
-    str book = "book";
-    cout << "Name:" << endl;
-    cin >> name;
-    cout << "Surname:" << endl;
-    cin >> sur;
-    cout << "Favorite " << book << ":" << endl;
-    cin >> fav;
-    ofstream file("output.txt");
-    file << name << endl << sur << endl << fav;
-    res(name, sur, fav, book);
+    cout << "Questions(1) or Results(2)" << endl;
+    int r;
+    cin >> r;
+    if(r == 1){
+        ifstream q("q.txt");
+        str sur, name, fav;
+        vector<string> all;
+        str book = "book";
+        str line;
+        while (std::getline(q, line)) {
+            cout << line << endl;
+            str alli;
+            cin >> alli;
+            all.push_back(alli);
+        }
+        ofstream file("output.txt");
+        res(all, file);
+    }
+    else if(r == 2){
+        ifstream file("output.txt");
+        str line;
+        while (std::getline(file, line))
+            cout << line << endl;
+    }
     return 0;
 }
