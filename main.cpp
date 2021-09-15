@@ -29,13 +29,25 @@
 
 using namespace std;
 
+void res(str name, str sur, str fav, str book){
+    cout << "Name: " << name << endl;
+    cout << "Surname: " << sur << endl;
+    cout << "Favorite " << book << ": " << fav << endl;
+}
+
 int main(){
     //ios_base::sync_with_stdio(false);
     //cin.tie(NULL);
     str sur, name, fav;
-    cout << "name " << "surname " << "favorite book";
-    cin >> name >> sur >> fav;
+    str book = "book";
+    cout << "Name:" << endl;
+    cin >> name;
+    cout << "Surname:" << endl;
+    cin >> sur;
+    cout << "Favorite " << book << ":" << endl;
+    cin >> fav;
     ofstream file("output.txt");
     file << name << endl << sur << endl << fav;
+    res(name, sur, fav, book);
     return 0;
 }
