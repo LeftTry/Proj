@@ -32,10 +32,21 @@ using namespace std;
 int main(){
     //ios_base::sync_with_stdio(false);
     //cin.tie(NULL);
+    ifstream q("q.txt");
     str sur, name, fav;
-    cout << "name " << "surname " << "favorite book";
-    cin >> name >> sur >> fav;
+    vector<string> all;
+    str book = "book";
+    str line;
+    while (std::getline(q, line)) {
+        cout << line << endl;
+        str alli;
+        cin >> alli;
+        all.push_back(alli);
+    }
     ofstream file("output.txt");
-    file << name << endl << sur << endl << fav;
+    for(au i : all){
+        file << i << endl;
+    }
+    //file << name << endl << sur << endl << fav;
     return 0;
 }
