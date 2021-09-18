@@ -38,6 +38,23 @@ void res(vector<str> &v, ofstream& file){
     }
 }
 
+void res(ifstream& file, int a){
+    str line;
+    int i = 0;
+    vector<pair<pair<str, str>, str>> v;
+    while (std::getline(file, line)){
+        if(i % 3 == a)
+            v.push_back({{line, " "}, " "});
+        else if(i % 3 == ((a + 1) % 3))
+            v.back().first.second = line;
+        else
+            v.back().second = line;
+        i++;
+    }
+    sort(v.begin(), v.end());
+    for(au j : v) cout << j.first.first << endl << j.first.second << endl << j.second << endl;
+}
+
 int main(){
     //ios_base::sync_with_stdio(false);
     //cin.tie(NULL);
@@ -61,20 +78,11 @@ int main(){
     }
     else if(r == 2){
         ifstream file("output.txt");
-        str line;
-        int i = 0;
-        vector<pair<pair<str, str>, str>> v;
-        while (std::getline(file, line)){
-            if(i % 3 == 0)
-                v.push_back({{line, " "}, " "});
-            else if(i % 3 == 1)
-                v.back().first.second = line;
-            else
-                v.back().second = line;
-            i++;
-        }
-        sort(v.begin(), v.end());
-        for(au j : v) cout << j.first.first << endl << j.first.second << endl << j.second << endl;
+        int a;
+        cout << "Choose how to sort: Name(0), Surname(1), Favorite subject(2)" << endl;
+        cin >> a;
+        res(file, a);
     }
     return 0;
 }
+
