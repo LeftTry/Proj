@@ -40,19 +40,25 @@ void res(vector<str> &v, ofstream& file){
 
 void res(ifstream& file, int a){
     str line;
-    int i = 0;
-    vector<pair<pair<str, str>, str>> v;
-    while (std::getline(file, line)){
-        if(i % 3 == a)
-            v.push_back({{line, " "}, " "});
-        else if(i % 3 == ((a + 1) % 3))
-            v.back().first.second = line;
-        else
-            v.back().second = line;
-        i++;
-    }
-    sort(v.begin(), v.end());
-    for(au j : v) cout << j.first.first << endl << j.first.second << endl << j.second << endl;
+        int i = 0;
+        vector<pair<pair<str, str>, str>> v;
+        while (std::getline(file, line)){
+            if(i % 3 == a)
+                v.push_back({{line, " "}, " "});
+            else if(i % 3 == ((a + 1) % 3))
+                v.back().first.second = line;
+            else
+                v.back().second = line;
+            i++;
+        }
+        sort(v.begin(), v.end());
+        for(au j : v) cout << j.first.first << endl << j.first.second << endl << j.second << endl;
+        cout << "Statistic:" << endl;
+        cout << "Quantity of ppl made test: " << v.size() << endl;
+        set<str> ss;
+        for(au j : v)
+            ss.insert(j.second);
+        cout << "Quantity of diff fav books: " << ss.size() << endl;
 }
 
 int main(){
