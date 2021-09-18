@@ -56,14 +56,25 @@ int main(){
             cin >> alli;
             all.push_back(alli);
         }
-        ofstream file("output.txt");
+        ofstream file("output.txt", std::ios::app);
         res(all, file);
     }
     else if(r == 2){
         ifstream file("output.txt");
         str line;
-        while (std::getline(file, line))
-            cout << line << endl;
+        int i = 0;
+        vector<pair<pair<str, str>, str>> v;
+        while (std::getline(file, line)){
+            if(i % 3 == 0)
+                v.push_back({{line, " "}, " "});
+            else if(i % 3 == 1)
+                v.back().first.second = line;
+            else
+                v.back().second = line;
+            i++;
+        }
+        sort(v.begin(), v.end());
+        for(au j : v) cout << j.first.first << endl << j.first.second << endl << j.second << endl;
     }
     return 0;
 }
