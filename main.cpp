@@ -40,25 +40,21 @@ void res(vector<str> &v, ofstream& file){
 
 void res(ifstream& file, int a){
     str line;
-        int i = 0;
-        vector<pair<pair<str, str>, str>> v;
-        while (std::getline(file, line)){
-            if(i % 3 == a)
-                v.push_back({{line, " "}, " "});
-            else if(i % 3 == ((a + 1) % 3))
-                v.back().first.second = line;
-            else
-                v.back().second = line;
-            i++;
-        }
-        sort(v.begin(), v.end());
-        for(au j : v) cout << j.first.first << endl << j.first.second << endl << j.second << endl;
-        cout << "Statistic:" << endl;
-        cout << "Quantity of ppl made test: " << v.size() << endl;
-        set<str> ss;
-        for(au j : v)
-            ss.insert(j.second);
-        cout << "Quantity of diff fav books: " << ss.size() << endl;
+    int i = 0;
+    int q = 0;
+    ifstream qt("q.txt");
+    while (std::getline(qt, line)) q++;
+    vector<str> v;
+    while (std::getline(file, line))
+        v.push_back(line);
+    for(au j : v) cout << j << endl;
+    cout << "Statistic:" << endl;
+    cout << "Quantity of ppl made test: " << v.size() / q << endl;
+    set<str> ss;
+    for(int j = 0;j < v.size();j++)
+        if(j % q == q - 1)
+            ss.insert(v[j]);
+    cout << "Quantity of diff fav books: " << ss.size() << endl;
 }
 
 int main(){
@@ -85,9 +81,9 @@ int main(){
     else if(r == 2){
         ifstream file("output.txt");
         int a;
-        cout << "Choose how to sort: Name(0), Surname(1), Favorite subject(2)" << endl;
-        cin >> a;
-        res(file, a);
+        //cout << "Choose how to sort: Name(0), Surname(1), Favorite subject(2)" << endl;
+        //cin >> a;
+        res(file, 0);
     }
     return 0;
 }
