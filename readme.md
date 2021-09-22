@@ -1,7 +1,9 @@
 # Proj
 ## Description
 
-This is test project for knowing git. Nothing interesting just easy program and arm disfunction.
+This is test project for knowing git. 
+
+Nothing interesting just easy program and arm disfunction.
 
 ## Changes
 //We changed fav film to fav book.
