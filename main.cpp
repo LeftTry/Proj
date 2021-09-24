@@ -60,7 +60,7 @@ void res(ifstream& file, int a){
 int main(){
     //ios_base::sync_with_stdio(false);
     //cin.tie(NULL);
-    cout << "Questions(1) or Results(2)" << endl;
+    cout << "Questions(1) or Results(2) or Redact questions(3)" << endl;
     int r;
     cin >> r;
     if(r == 1){
@@ -84,6 +84,45 @@ int main(){
         //cout << "Choose how to sort: Name(0), Surname(1), Favorite subject(2)" << endl;
         //cin >> a;
         res(file, 0);
+    }
+    else if(r == 3) {
+        ifstream fino("q.txt");
+
+        string question;
+
+        cout << "Old question list: " << endl;
+
+        while(getline(fino, question))
+            cout << question << endl;
+
+        fino.close();
+
+        ofstream fout("q.txt");
+
+        int amQuestions;
+
+        cout << "Enter new questions amount: " << endl;
+
+        cin >> amQuestions;
+
+        cout << "Enter new question list: " << endl;
+
+        getline(cin, question);
+
+        for(int i = 0; i < amQuestions; i ++)
+        {
+            getline(cin, question);
+            fout << question << endl;
+        }
+
+        fout.close();
+
+        ofstream fouto("output.txt");
+
+        fouto << "";
+
+        fouto.close();
+
     }
     return 0;
 }
